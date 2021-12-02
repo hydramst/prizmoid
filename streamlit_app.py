@@ -56,20 +56,18 @@ def tensor_to_image(tensor):
 original_image = st.text_input("Original image URL", 'https://storage.googleapis.com/download.tensorflow.org/example_images/YellowLabradorLooking_new.jpg')
 style_image = st.text_input("Style image from URL", 'https://storage.googleapis.com/download.tensorflow.org/example_images/Vassily_Kandinsky%2C_1913_-_Composition_7.jpg')
 
-
-content_path = tf.keras.utils.get_file('YellowLabradorLooking_new.jpg', original_image)
-style_path = tf.keras.utils.get_file('kandinsky5.jpg', style_image)
-
-
+if st.button('Restyle'):
+  content_path = tf.keras.utils.get_file('YellowLabradorLooking_new.jpg', original_image)
+  style_path = tf.keras.utils.get_file('kandinsky5.jpg', style_image)
 
 
-content_image = load_img(content_path)
-style_image = load_img(style_path)
+  content_image = load_img(content_path)
+  style_image = load_img(style_path)
 
 
-stylized_image = hub_model(tf.constant(content_image), tf.constant(style_image))[0]
+  stylized_image = hub_model(tf.constant(content_image), tf.constant(style_image))[0]
 
-final_img = tensor_to_image(stylized_image)
+  final_img = tensor_to_image(stylized_image)
 
 
-st.image(final_img)
+  st.image(final_img)
