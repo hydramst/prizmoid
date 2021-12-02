@@ -44,6 +44,15 @@ def load_img(path_to_img):
   return img
 
 
+def tensor_to_image(tensor):
+  tensor = tensor*255
+  tensor = np.array(tensor, dtype=np.uint8)
+  if np.ndim(tensor)>3:
+    assert tensor.shape[0] == 1
+    tensor = tensor[0]
+  return PIL.Image.fromarray(tensor)
+
+
 
 content_path = tf.keras.utils.get_file('YellowLabradorLooking_new.jpg', 'https://storage.googleapis.com/download.tensorflow.org/example_images/YellowLabradorLooking_new.jpg')
 style_path = tf.keras.utils.get_file('kandinsky5.jpg','https://storage.googleapis.com/download.tensorflow.org/example_images/Vassily_Kandinsky%2C_1913_-_Composition_7.jpg')
@@ -53,5 +62,6 @@ content_image = load_img(content_path)
 style_image = load_img(style_path)
 
 
-outputs = hub_module(tf.constant(content_image), tf.constant(style_image))
-stylized_image = outputs[0]
+stylized_image = hub_model(tf.constant(content_image), tf.constant(style_image))[0]
+
+tensor_to_image(stylized_image)
