@@ -1,1 +1,3 @@
 functions
+matplotlib
+tensorflow
