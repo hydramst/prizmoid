@@ -3,6 +3,10 @@ import streamlit as st
 import functools
 import os
 
+import PIL.Image
+import time
+
+
 from matplotlib import gridspec
 import matplotlib.pylab as plt
 import numpy as np
