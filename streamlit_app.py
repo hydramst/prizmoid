@@ -5,6 +5,7 @@ import os
 
 import PIL.Image
 import time
+import requests
 
 
 from matplotlib import gridspec
