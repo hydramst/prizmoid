@@ -62,6 +62,10 @@ def tensor_to_image(tensor):
   return PIL.Image.fromarray(tensor)
 
 
+### 'Screens'
+
+## Upload style image and save file in /styles
+
 def upload_style_image():
   st.title("Upload image for styling")
 
@@ -70,7 +74,15 @@ pwd = os.getcwd()
 listing = os.listdir(pwd)
 st.write(listing)
 
-st.sidebar.radio('Choose action', ('upload_style', 'transfer_style'))
+page = st.sidebar.radio('Choose action', ('upload_style', 'transfer_style', 'system_info'))
+
+if page == 'upload_style':
+  st.header('Upload new style')
+  style_file = st.file_uploader("Please upload an image file or...", type=["jpg","jpeg", "png"])
+  with open(os.path.join("styles",image_file.name),"wb") as f: 
+      f.write(image_file.getbuffer())         
+  st.success("Saved File")
+
 
 
 
