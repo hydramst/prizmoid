@@ -79,7 +79,7 @@ page = st.sidebar.radio('Choose action', ('upload_style', 'transfer_style', 'sys
 if page == 'upload_style':
   st.header('Upload new style')
   style_file = st.file_uploader("Please upload an image file or...", type=["jpg","jpeg", "png"])
-  with open(os.path.join("styles",image_file.name),"wb") as f: 
+  with open(os.path.join("styles",style_file.name),"wb") as f: 
       f.write(image_file.getbuffer())         
   st.success("Saved File")
 
