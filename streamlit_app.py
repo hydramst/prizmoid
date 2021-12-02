@@ -64,4 +64,7 @@ style_image = load_img(style_path)
 
 stylized_image = hub_model(tf.constant(content_image), tf.constant(style_image))[0]
 
-tensor_to_image(stylized_image)
+final_img = tensor_to_image(stylized_image)
+
+
+st.image(final_img)
