@@ -64,10 +64,10 @@ if st.button('Restyle'):
   content_image = load_img(content_path)
   style_image = load_img(style_path)
 
-  st.write(original_image_url)
-  st.image(content_image)
-  st.write(style_image_url)
-  st.image(style_image)
+  # st.write(original_image_url)
+  # st.image(content_image)
+  # st.write(style_image_url)
+  # st.image(style_image)
 
 
   stylized_image = hub_model(tf.constant(content_image), tf.constant(style_image))[0]
