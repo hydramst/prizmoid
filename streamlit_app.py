@@ -6,6 +6,7 @@ import os
 import PIL.Image
 import time
 import requests
+import glob
 
 
 from matplotlib import gridspec
@@ -16,8 +17,7 @@ import tensorflow_hub as hub
 os.environ['TFHUB_MODEL_LOAD_FORMAT'] = 'COMPRESSED'
 
 
-st.write("TF Version: ", tf.__version__)
-st.write("TF Hub version: ", hub.__version__)
+
 
   
   
@@ -67,7 +67,20 @@ def tensor_to_image(tensor):
 ## Upload style image and save file in /styles
 
 def upload_style_image():
-  st.title("Upload image for styling")
+  style_file = st.file_uploader("Please upload an image file or...", type=["jpg","jpeg", "png"])
+  if style_file:
+    with open(os.path.join("styles",style_file.name),"wb") as f: 
+        f.write(style_file.getbuffer())         
+  st.success("Saved File")
+
+def show_gallery_of_styles():
+  images_glob = glob.glob("styles/")
+
+  for i in range(1,len(images_glob)):
+    cols = st.beta_columns(1)
+    cols[0].image(images_glob[i] %i, use_column_width=True)
+
+
 
 
 pwd = os.getcwd()
@@ -78,16 +91,20 @@ page = st.sidebar.radio('Choose action', ('upload_style', 'transfer_style', 'sys
 
 if page == 'upload_style':
   st.header('Upload new style')
-  style_file = st.file_uploader("Please upload an image file or...", type=["jpg","jpeg", "png"])
-  if style_file:
-    with open(os.path.join("styles",style_file.name),"wb") as f: 
-        f.write(style_file.getbuffer())         
-    st.success("Saved File")
+  upload_style_image()
+
+
+elif page == 'system_info':
+  st.write("TF Version: ", tf.__version__)
+  st.write("TF Hub version: ", hub.__version__)
+
 
 
 
 elif page == "transfer_style":
-    
+
+
+
 
 
 
