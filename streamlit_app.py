@@ -74,8 +74,8 @@ if st.button('Restyle'):
   content_image = load_img("original.jpg")
   style_image = load_img("style.jpg")
 
-  # st.write(original_image_url)
-  # st.image(content_image)
+  st.write(original_image_url)
+  st.image(content_image)
   # st.write(style_image_url)
   # st.image(style_image)
 
