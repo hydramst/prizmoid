@@ -24,7 +24,7 @@ st.write("GPU available: ", tf.config.list_physical_devices('GPU'))
   
   
 hub_handle = 'model/magenta_arbitrary-image-stylization-v1-256_2'
-hub_module = hub.load(hub_handle)
+hub_model = hub.load(hub_handle)
 
 
 def load_img(path_to_img):
