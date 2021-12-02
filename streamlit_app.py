@@ -62,11 +62,15 @@ def tensor_to_image(tensor):
   return PIL.Image.fromarray(tensor)
 
 
+def upload_style_image():
+  st.title("Upload image for styling")
+
+
 pwd = os.getcwd()
 listing = os.listdir(pwd)
-st.sidebar.write(pwd)
-st.sidebar.write(listing)
+st.write(listing)
 
+st.sidebar.radio('Choose action', ('upload_style', 'transfer_style'))
 
 
 
