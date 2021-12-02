@@ -63,7 +63,7 @@ def tensor_to_image(tensor):
 
 
 pwd = os.getcwd()
-listing = os.listing(pwd)
+listing = os.listdir(pwd)
 st.sidebar.write(pwd)
 st.sidebar.write(listing)
 
