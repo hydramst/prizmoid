@@ -62,9 +62,8 @@ original_image_url = st.text_input("Original image URL",)
 style_image_url = st.text_input("Style image from URL", )
 
 if st.button('Restyle'):
-  testfile = urllib.URLopener()
-  testfile.retrieve(original_image_url, "original.jpg")
-  testfile.retrieve(original_image_url, "style.jpg")
+  urllib.retrieve(original_image_url, "original.jpg")
+  urllib.retrieve(original_image_url, "style.jpg")
   #content_path = tf.keras.utils.get_file('from.jpg',original_image_url)
   #style_path = tf.keras.utils.get_file('to.jpg', style_image_url)
 
