@@ -86,28 +86,33 @@ if page == 'upload_style':
 
 
 
-
-original_image_url = st.text_input("Original image URL",)
-style_image_url = st.text_input("Style image from URL", )
-
-if st.button('Restyle'):
-  download_file(original_image_url, "original.jpg")
-  download_file(style_image_url, "style.jpg")
-  #content_path = tf.keras.utils.get_file('from.jpg',original_image_url)
-  #style_path = tf.keras.utils.get_file('to.jpg', style_image_url)
-
-  content_image = load_img("original.jpg")
-  style_image = load_img("style.jpg")
-
-  st.write(original_image_url)
-  #st.image(content_image)
-  # st.write(style_image_url)
-  # st.image(style_image)
+elif page == "transfer_style":
+    
 
 
-  stylized_image = hub_model(tf.constant(content_image), tf.constant(style_image))[0]
-
-  final_img = tensor_to_image(stylized_image)
 
 
-  st.image(final_img)
+  original_image_url = st.text_input("Original image URL",)
+  style_image_url = st.text_input("Style image from URL", )
+
+  if st.button('Restyle'):
+    download_file(original_image_url, "original.jpg")
+    download_file(style_image_url, "style.jpg")
+    #content_path = tf.keras.utils.get_file('from.jpg',original_image_url)
+    #style_path = tf.keras.utils.get_file('to.jpg', style_image_url)
+
+    content_image = load_img("original.jpg")
+    style_image = load_img("style.jpg")
+
+    st.write(original_image_url)
+    #st.image(content_image)
+    # st.write(style_image_url)
+    # st.image(style_image)
+
+
+    stylized_image = hub_model(tf.constant(content_image), tf.constant(style_image))[0]
+
+    final_img = tensor_to_image(stylized_image)
+
+
+    st.image(final_img)
