@@ -10,8 +10,11 @@ import time
 from matplotlib import gridspec
 import matplotlib.pylab as plt
 import numpy as np
+
 import tensorflow as tf
 import tensorflow_hub as hub
+os.environ['TFHUB_MODEL_LOAD_FORMAT'] = 'COMPRESSED'
+
 
 st.write("TF Version: ", tf.__version__)
 st.write("TF Hub version: ", hub.__version__)
