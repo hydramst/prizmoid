@@ -81,7 +81,7 @@ if page == 'upload_style':
   style_file = st.file_uploader("Please upload an image file or...", type=["jpg","jpeg", "png"])
   if style_file:
     with open(os.path.join("styles",style_file.name),"wb") as f: 
-        f.write(image_file.getbuffer())         
+        f.write(style_file.getbuffer())         
     st.success("Saved File")
 
 
