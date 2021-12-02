@@ -59,8 +59,8 @@ style_image = st.text_input("Style image from URL", )
 if st.button('Restyle'):
   st.write(original_image)
   st.write(style_image)
-  content_path = tf.keras.utils.get_file('YellowLabradorLooking_new.jpg', original_image)
-  style_path = tf.keras.utils.get_file('kandinsky5.jpg', style_image)
+  content_path = tf.keras.utils.get_file(original_image)
+  style_path = tf.keras.utils.get_file(style_image)
 
 
   content_image = load_img(content_path)
