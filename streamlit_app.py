@@ -5,6 +5,7 @@ import os
 
 import PIL.Image
 import time
+import urllib
 
 
 from matplotlib import gridspec
@@ -44,6 +45,10 @@ def load_img(path_to_img):
   return img
 
 
+def get_image_from_url(url):
+  response = requests.get(url)
+
+
 def tensor_to_image(tensor):
   tensor = tensor*255
   tensor = np.array(tensor, dtype=np.uint8)
@@ -57,12 +62,14 @@ original_image_url = st.text_input("Original image URL",)
 style_image_url = st.text_input("Style image from URL", )
 
 if st.button('Restyle'):
+  testfile = urllib.URLopener()
+  testfile.retrieve(original_image_url, "original.jpg")
+  testfile.retrieve(original_image_url, "style.jpg")
+  #content_path = tf.keras.utils.get_file('from.jpg',original_image_url)
+  #style_path = tf.keras.utils.get_file('to.jpg', style_image_url)
 
-  content_path = tf.keras.utils.get_file('from.jpg',original_image_url)
-  style_path = tf.keras.utils.get_file('to.jpg', style_image_url)
-
-  content_image = load_img(content_path)
-  style_image = load_img(style_path)
+  content_image = load_img("original.jpg")
+  style_image = load_img("style.jpg")
 
   # st.write(original_image_url)
   # st.image(content_image)
