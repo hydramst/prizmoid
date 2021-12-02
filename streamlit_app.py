@@ -53,20 +53,20 @@ def tensor_to_image(tensor):
   return PIL.Image.fromarray(tensor)
 
 
-original_image = st.text_input("Original image URL",)
-style_image = st.text_input("Style image from URL", )
+original_image_url = st.text_input("Original image URL",)
+style_image_url = st.text_input("Style image from URL", )
 
 if st.button('Restyle'):
 
-  content_path = tf.keras.utils.get_file('from.jpg',original_image)
-  style_path = tf.keras.utils.get_file('to.jpg', style_image)
+  content_path = tf.keras.utils.get_file('from.jpg',original_image_url)
+  style_path = tf.keras.utils.get_file('to.jpg', style_image_url)
 
   content_image = load_img(content_path)
   style_image = load_img(style_path)
 
-  st.write(original_image)
-  st.image(content_path)
-  st.write(style_image)
+  st.write(original_image_url)
+  st.image(content_image)
+  st.write(style_image_url)
   st.image(style_image)
 
 
