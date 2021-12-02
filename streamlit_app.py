@@ -23,7 +23,7 @@ st.write("GPU available: ", tf.config.list_physical_devices('GPU'))
 
   
   
-hub_handle = 'model/arbitrary-image-stylization-v1-256/2'
+hub_handle = 'model/magenta_arbitrary-image-stylization-v1-256_2'
 hub_module = hub.load(hub_handle)
 
 content_image = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Golden_Gate_Bridge_from_Battery_Spencer.jpg/640px-Golden_Gate_Bridge_from_Battery_Spencer.jpg"
