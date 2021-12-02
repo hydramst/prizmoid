@@ -91,6 +91,7 @@ page = st.sidebar.radio('Choose action', ('upload_style', 'transfer_style', 'sys
 
 if page == 'upload_style':
   st.header('Upload new style')
+  show_gallery_of_styles()
   upload_style_image()
 
 
