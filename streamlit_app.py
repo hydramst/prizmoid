@@ -75,6 +75,7 @@ def upload_style_image():
 
 def show_gallery_of_styles():
   images_glob = glob.glob("styles/")
+  st.write(images_glob)
 
   for i in range(1,len(images_glob)):
     cols = st.beta_columns(1)
@@ -83,9 +84,6 @@ def show_gallery_of_styles():
 
 
 
-pwd = os.getcwd()
-listing = os.listdir(pwd)
-st.write(listing)
 
 page = st.sidebar.radio('Choose action', ('upload_style', 'transfer_style', 'system_info'))
 
@@ -98,6 +96,10 @@ if page == 'upload_style':
 elif page == 'system_info':
   st.write("TF Version: ", tf.__version__)
   st.write("TF Hub version: ", hub.__version__)
+
+  pwd = os.getcwd()
+  listing = os.listdir(pwd)
+  st.write(listing)
 
 
 
