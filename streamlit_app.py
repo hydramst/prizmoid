@@ -53,8 +53,8 @@ def tensor_to_image(tensor):
   return PIL.Image.fromarray(tensor)
 
 
-original_image = st.text_input("Original image URL", 'https://storage.googleapis.com/download.tensorflow.org/example_images/YellowLabradorLooking_new.jpg')
-style_image = st.text_input("Style image from URL", 'https://storage.googleapis.com/download.tensorflow.org/example_images/Vassily_Kandinsky%2C_1913_-_Composition_7.jpg')
+original_image = st.text_input("Original image URL",)
+style_image = st.text_input("Style image from URL", )
 
 if st.button('Restyle'):
   st.write(original_image)
