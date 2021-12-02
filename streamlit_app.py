@@ -41,7 +41,7 @@ def load_img(path_to_img):
   return img
 
 
-def download_file(url, local_filename)
+def download_file(url, local_filename):
     r = requests.get(url)
     f = open(local_filename, 'wb')
     for chunk in r.iter_content(chunk_size=512 * 1024): 
