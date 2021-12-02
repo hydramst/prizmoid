@@ -17,9 +17,6 @@ os.environ['TFHUB_MODEL_LOAD_FORMAT'] = 'COMPRESSED'
 
 st.write("TF Version: ", tf.__version__)
 st.write("TF Hub version: ", hub.__version__)
-st.write("Eager mode enabled: ", tf.executing_eagerly())
-st.write("GPU available: ", tf.config.list_physical_devices('GPU'))
-
 
   
   
@@ -44,8 +41,15 @@ def load_img(path_to_img):
   return img
 
 
-def get_image_from_url(url):
-  response = requests.get(url)
+def download_file(url, local_filename)
+    r = requests.get(url)
+    f = open(local_filename, 'wb')
+    for chunk in r.iter_content(chunk_size=512 * 1024): 
+        if chunk: # filter out keep-alive new chunks
+            f.write(chunk)
+    f.close()
+    return 
+
 
 
 def tensor_to_image(tensor):
@@ -61,8 +65,8 @@ original_image_url = st.text_input("Original image URL",)
 style_image_url = st.text_input("Style image from URL", )
 
 if st.button('Restyle'):
-  urllib.retrieve(original_image_url, "original.jpg")
-  urllib.retrieve(original_image_url, "style.jpg")
+  download_file(original_image_url, "original.jpg")
+  download_file(style_image_url, "style.jpg")
   #content_path = tf.keras.utils.get_file('from.jpg',original_image_url)
   #style_path = tf.keras.utils.get_file('to.jpg', style_image_url)
 
