@@ -50,3 +50,14 @@ def show_n(images, titles=('',)):
     plt.axis('off')
     plt.title(titles[i] if len(titles) > i else '')
   plt.show()
+  
+  
+  
+hub_handle = 'https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2'
+hub_module = hub.load(hub_handle)
+
+content_image = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Golden_Gate_Bridge_from_Battery_Spencer.jpg/640px-Golden_Gate_Bridge_from_Battery_Spencer.jpg"
+style_image = "https://upload.wikimedia.org/wikipedia/commons/0/0a/The_Great_Wave_off_Kanagawa.jpg"
+
+outputs = hub_module(tf.constant(content_image), tf.constant(style_image))
+stylized_image = outputs[0]
