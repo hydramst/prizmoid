@@ -62,6 +62,9 @@ def tensor_to_image(tensor):
   return PIL.Image.fromarray(tensor)
 
 
+st.sidebar(st.write(os.getcwd()))
+
+
 original_image_url = st.text_input("Original image URL",)
 style_image_url = st.text_input("Style image from URL", )
 
