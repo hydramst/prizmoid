@@ -69,14 +69,15 @@ def tensor_to_image(tensor):
 def upload_style_image():
   style_file_name = st.text_input("Name your style", 'name')
   style_file = st.file_uploader("Please upload an image file or...", type=["jpg","jpeg", "png"])
-  if style_file and st.button("Upload") and style_file_name != 'name':
-    image = PIL.Image.open(style_file)
-    rgb_im = image.convert('RGB')
-    new_file_name = os.path.join("styles/",style_file_name + '.jpg')
-    st.write(new_file_name)
-    with open(new_file_name,"wb") as f: 
-        f.write(style_file.getbuffer())         
-    st.success("Saved File")
+  if style_file:
+    if st.button("Upload"):
+      image = PIL.Image.open(style_file)
+      rgb_im = image.convert('RGB')
+      new_file_name = os.path.join("styles/",style_file_name + '.jpg')
+      st.write(new_file_name)
+      with open(new_file_name,"wb") as f: 
+          f.write(style_file.getbuffer())         
+      st.success("Saved File")
 
 def show_gallery_of_styles():
   images_glob = os.listdir("styles/")
