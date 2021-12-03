@@ -112,7 +112,7 @@ elif page == 'system_info':
   st.write("TF Hub version: ", hub.__version__)
 
   pwd = os.getcwd()
-  listing = 
+  listing = os.listdir(pwd)
   st.write(listing)
   st.write(os.listdir(pwd+'styles/'))
 
