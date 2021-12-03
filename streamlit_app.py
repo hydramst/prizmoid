@@ -129,9 +129,7 @@ elif page == "transfer_style":
 
   if st.button('Restyle'):
     download_file(original_image_url, "original.jpg")
-    #download_file(style_image_url, "style.jpg")
-    #content_path = tf.keras.utils.get_file('from.jpg',original_image_url)
-    #style_path = tf.keras.utils.get_file('to.jpg', style_image_url)
+    st.image("original.jpg")
 
     content_image = load_img("original.jpg")
     style_image = load_img(style_image_url)
