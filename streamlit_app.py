@@ -1,7 +1,7 @@
 import streamlit as st
 
 import functools
-import os
+import os, sys
 
 import PIL.Image
 import time
@@ -23,6 +23,8 @@ os.environ['TFHUB_MODEL_LOAD_FORMAT'] = 'COMPRESSED'
   
 hub_handle = 'model/magenta_arbitrary-image-stylization-v1-256_2'
 hub_model = hub.load(hub_handle)
+
+def conver_image_to_jpeg():
 
 
 def load_img(path_to_img):
@@ -69,6 +71,7 @@ def tensor_to_image(tensor):
 def upload_style_image():
   style_file = st.file_uploader("Please upload an image file or...", type=["jpg","jpeg", "png"])
   if style_file:
+    image = Image.open(style_file)
     new_file_name = os.path.join("styles/",style_file.name)
     st.write(new_file_name)
     with open(new_file_name,"wb") as f: 
