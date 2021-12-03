@@ -148,4 +148,4 @@ elif page == "transfer_style":
     # final_img = tensor_to_image(stylized_image)
 
 
-    st.image(final_img)
+    #st.image(final_img)
