@@ -73,7 +73,7 @@ def upload_style_image():
     if st.button("Upload"):
       image = PIL.Image.open(style_file)
       rgb_im = image.convert('RGB')
-      new_file_name = os.path.join("styles/",style_file_name + '.jpg')
+      new_file_name = os.path.join("styles/", style_file_name + '.jpg')
       st.write(new_file_name)
       with open(new_file_name,"wb") as f: 
           f.write(style_file.getbuffer())         
@@ -81,13 +81,12 @@ def upload_style_image():
 
 def show_gallery_of_styles():
   images_glob = os.listdir("styles/")
-  st.write(images_glob)
   images_glob = [x for x in images_glob if x.endswith(".jpg")]
-  st.write(images_glob)
 
   for i in range(len(images_glob)):
-    cols = st.columns(1)
+    cols = st.columns(2)
     cols[0].image("styles/" + images_glob[i], width = 200)
+    cols[1].write(images_glob[i].rsplit('.',1)[0])
 
 
 
