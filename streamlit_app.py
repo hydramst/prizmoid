@@ -47,7 +47,7 @@ def load_img(path_to_img):
 
 def download_file(url, local_filename):
     r = requests.get(url)
-    f = open('styles/' + local_filename, 'wb')
+    f = open(local_filename, 'wb')
     for chunk in r.iter_content(chunk_size=512 * 1024): 
         if chunk: # filter out keep-alive new chunks
             f.write(chunk)
@@ -73,7 +73,8 @@ def upload_style_image():
   style_file_name = st.text_input("Name your style", 'name')
   style_file = st.file_uploader("Please upload an image file or...", type=["jpg","jpeg", "png"])
   if style_file:
-    #image = Image.open(style_file)
+    image = Image.open(style_file)
+    rgb_im = image.convert('RGB')
     new_file_name = os.path.join("styles/",style_file_name + '.jpg')
     st.write(new_file_name)
     with open(new_file_name,"wb") as f: 
