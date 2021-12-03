@@ -121,7 +121,7 @@ elif page == "transfer_style":
   style_img = st.radio('Choose style', images_glob)
 
 
-  style_image_url = "styles/" + style_img)
+  style_image_url = "styles/" + style_img
   original_image_url = st.text_input("Style image from URL", )
 
   if st.button('Restyle'):
