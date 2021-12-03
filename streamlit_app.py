@@ -53,6 +53,8 @@ def download_file(url, local_filename):
 
 
 
+
+
 def tensor_to_image(tensor):
   tensor = tensor*255
   tensor = np.array(tensor, dtype=np.uint8)
@@ -92,12 +94,16 @@ def show_gallery_of_styles():
 
 
 
-page = st.sidebar.radio('Choose action', ('upload_style', 'transfer_style', 'system_info'))
+page = st.sidebar.radio('Choose action', ('upload_style', 'show_styles', 'transfer_style', 'system_info'))
 
 if page == 'upload_style':
   st.header('Upload new style')
-  show_gallery_of_styles()
   upload_style_image()
+
+if page == 'show_styles':
+  st.header('Styles gallery')
+  show_gallery_of_styles()
+
 
 
 elif page == 'system_info':
