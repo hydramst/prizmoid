@@ -17,9 +17,6 @@ import tensorflow_hub as hub
 os.environ['TFHUB_MODEL_LOAD_FORMAT'] = 'COMPRESSED'
 
 
-
-
-  
   
 hub_handle = 'model/magenta_arbitrary-image-stylization-v1-256_2'
 hub_model = hub.load(hub_handle)
@@ -72,7 +69,7 @@ def tensor_to_image(tensor):
 def upload_style_image():
   style_file_name = st.text_input("Name your style", 'name')
   style_file = st.file_uploader("Please upload an image file or...", type=["jpg","jpeg", "png"])
-  if style_file:
+  if style_file and st.button("Upload") and style_file_name != 'name':
     image = PIL.Image.open(style_file)
     rgb_im = image.convert('RGB')
     new_file_name = os.path.join("styles/",style_file_name + '.jpg')
