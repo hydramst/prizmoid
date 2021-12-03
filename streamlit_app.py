@@ -132,19 +132,19 @@ elif page == "transfer_style":
   if st.button('Restyle'):
     download_file(original_image_url, "original.jpg")
     st.image("original.jpg")
-    st.image(style_image_url)
+    #st.image(style_image_url)
 
     content_image = load_img("original.jpg")
     style_image = load_img(style_image_url)
 
-    st.write(original_image_url)
+    #st.write(original_image_url)
     # st.write(style_image_url)
     # st.image(style_image)
 
 
-    # stylized_image = hub_model(tf.constant(content_image), tf.constant(style_image))[0]
+    stylized_image = hub_model(tf.constant(content_image), tf.constant(style_image))[0]
 
-    # final_img = tensor_to_image(stylized_image)
+    final_img = tensor_to_image(stylized_image)
 
 
-    #st.image(final_img)
+    st.image(final_img)
