@@ -81,6 +81,7 @@ def upload_style_image():
 
 def show_gallery_of_styles():
   images_glob = os.listdir("styles/")
+  images_glob = [x for x in images_glob if x.endswith(".jpg")]
   st.write(images_glob)
 
   for i in range(1,len(images_glob)):
