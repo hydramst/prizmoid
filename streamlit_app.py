@@ -138,7 +138,6 @@ elif page == "transfer_style":
     style_image = load_img(style_image_url)
 
     st.write(original_image_url)
-    st.image(style_image)
     # st.write(style_image_url)
     # st.image(style_image)
 
