@@ -115,10 +115,9 @@ elif page == 'system_info':
 
 elif page == "transfer_style":
 
-
-
-
-
+  images_glob = os.listdir("styles/")
+  images_glob = set([x for x in images_glob if x.endswith(".jpg")])
+  st.radio('Choose style', images_glob)
 
 
   original_image_url = st.text_input("Original image URL",)
