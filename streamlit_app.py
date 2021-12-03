@@ -133,14 +133,14 @@ elif page == "transfer_style":
     style_image = load_img(style_img)
 
     st.write(original_image_url)
-    #st.image(content_image)
+    st.image(style_image)
     # st.write(style_image_url)
     # st.image(style_image)
 
 
-    stylized_image = hub_model(tf.constant(content_image), tf.constant(style_image))[0]
+    # stylized_image = hub_model(tf.constant(content_image), tf.constant(style_image))[0]
 
-    final_img = tensor_to_image(stylized_image)
+    # final_img = tensor_to_image(stylized_image)
 
 
     st.image(final_img)
