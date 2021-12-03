@@ -77,8 +77,9 @@ def upload_style_image():
       rgb_im = image.convert('RGB')
       new_file_name = os.path.join("styles/", style_file_name + '.jpg')
       st.write(new_file_name)
-      with open(new_file_name,"wb") as f: 
-          f.write(style_file.getbuffer())         
+      rgb_im.save(new_file_name, format="JPEG")
+      # with open(new_file_name,"wb") as f: 
+      #     f.write(style_file.getbuffer())         
       st.success("Saved File")
 
 def show_gallery_of_styles():
