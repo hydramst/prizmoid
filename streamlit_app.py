@@ -70,10 +70,11 @@ def tensor_to_image(tensor):
 ## Upload style image and save file in /styles
 
 def upload_style_image():
+  style_file_name = st.text_input("Name your style", 'name')
   style_file = st.file_uploader("Please upload an image file or...", type=["jpg","jpeg", "png"])
   if style_file:
     #image = Image.open(style_file)
-    new_file_name = os.path.join("styles/",style_file.name)
+    new_file_name = os.path.join("styles/",style_file_name + '.jpg')
     st.write(new_file_name)
     with open(new_file_name,"wb") as f: 
         f.write(style_file.getbuffer())         
