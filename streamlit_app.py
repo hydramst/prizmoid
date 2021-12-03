@@ -77,10 +77,11 @@ def upload_style_image():
     st.write(new_file_name)
     with open(new_file_name,"wb") as f: 
         f.write(style_file.getbuffer())         
-  st.success("Saved File")
+    st.success("Saved File")
 
 def show_gallery_of_styles():
   images_glob = os.listdir("styles/")
+  st.write(images_glob)
   images_glob = [x for x in images_glob if x.endswith(".jpg")]
   st.write(images_glob)
 
