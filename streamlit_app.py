@@ -44,7 +44,7 @@ def load_img(path_to_img):
 
 def download_file(url, local_filename):
     r = requests.get(url)
-    f = open(local_filename, 'wb')
+    f = open('styles/' + local_filename, 'wb')
     for chunk in r.iter_content(chunk_size=512 * 1024): 
         if chunk: # filter out keep-alive new chunks
             f.write(chunk)
@@ -74,7 +74,7 @@ def upload_style_image():
   st.success("Saved File")
 
 def show_gallery_of_styles():
-  images_glob = glob.glob("/styles/")
+  images_glob = glob.glob("styles/")
   st.write(images_glob)
 
   for i in range(1,len(images_glob)):
