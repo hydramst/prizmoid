@@ -85,8 +85,8 @@ def show_gallery_of_styles():
   st.write(images_glob)
 
   for i in range(1,len(images_glob)):
-    cols = st.beta_columns(1)
-    cols[0].image(images_glob[i] %i, use_column_width=True)
+    cols = st.columns(1)
+    cols[0].image(images_glob[i], use_column_width=True)
 
 
 
