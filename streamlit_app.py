@@ -87,7 +87,7 @@ def show_gallery_of_styles():
   images_glob = [x for x in images_glob if x.endswith(".jpg")]
   st.write(images_glob)
 
-  for i in range(1,len(images_glob)):
+  for i in range(len(images_glob)):
     cols = st.columns(1)
     cols[0].image("styles/" + images_glob[i], width = 200)
 
