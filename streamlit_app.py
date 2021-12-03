@@ -131,7 +131,7 @@ elif page == "transfer_style":
     #style_path = tf.keras.utils.get_file('to.jpg', style_image_url)
 
     content_image = load_img("original.jpg")
-    style_image = load_img(original_image_url)
+    style_image = load_img(style_image_url)
 
     st.write(original_image_url)
     st.image(style_image)
