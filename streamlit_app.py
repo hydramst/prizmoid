@@ -121,8 +121,8 @@ elif page == "transfer_style":
   style_img = st.radio('Choose style', images_glob)
 
 
-  original_image_url = "styles/" + st.text_input("Original image URL",)
-  #style_image_url = st.text_input("Style image from URL", )
+  style_image_url = "styles/" + style_img)
+  original_image_url = st.text_input("Style image from URL", )
 
   if st.button('Restyle'):
     download_file(original_image_url, "original.jpg")
@@ -131,7 +131,7 @@ elif page == "transfer_style":
     #style_path = tf.keras.utils.get_file('to.jpg', style_image_url)
 
     content_image = load_img("original.jpg")
-    style_image = load_img(style_img)
+    style_image = load_img(original_image_url)
 
     st.write(original_image_url)
     st.image(style_image)
