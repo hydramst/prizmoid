@@ -86,7 +86,7 @@ def show_gallery_of_styles():
 
   for i in range(1,len(images_glob)):
     cols = st.columns(1)
-    cols[0].image(images_glob[i], use_column_width=True)
+    cols[0].image("styles/" + images_glob[i], use_column_width=True)
 
 
 
