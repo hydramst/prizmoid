@@ -130,6 +130,7 @@ elif page == "transfer_style":
   if st.button('Restyle'):
     download_file(original_image_url, "original.jpg")
     st.image("original.jpg")
+    st.write(style_image_url)
 
     content_image = load_img("original.jpg")
     style_image = load_img(style_image_url)
