@@ -25,6 +25,7 @@ hub_handle = 'model/magenta_arbitrary-image-stylization-v1-256_2'
 hub_model = hub.load(hub_handle)
 
 def conver_image_to_jpeg():
+  pass
 
 
 def load_img(path_to_img):
