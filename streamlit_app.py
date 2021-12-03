@@ -73,7 +73,7 @@ def upload_style_image():
   style_file_name = st.text_input("Name your style", 'name')
   style_file = st.file_uploader("Please upload an image file or...", type=["jpg","jpeg", "png"])
   if style_file:
-    image = Image.open(style_file)
+    image = PIL.Image.open(style_file)
     rgb_im = image.convert('RGB')
     new_file_name = os.path.join("styles/",style_file_name + '.jpg')
     st.write(new_file_name)
