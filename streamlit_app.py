@@ -114,7 +114,7 @@ elif page == 'system_info':
   pwd = os.getcwd()
   listing = os.listdir(pwd)
   st.write(listing)
-  st.write(os.listdir(pwd+'styles/'))
+  st.write(os.listdir(pwd+'/styles/'))
 
 
 
