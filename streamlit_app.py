@@ -76,7 +76,7 @@ def upload_style_image():
   st.success("Saved File")
 
 def show_gallery_of_styles():
-  images_glob = glob.glob("styles/")
+  images_glob = os.listdir("styles/")
   st.write(images_glob)
 
   for i in range(1,len(images_glob)):
