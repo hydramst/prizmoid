@@ -1,5 +1,5 @@
 functions
 matplotlib
-tensorflow
+tensorflow-cpu
 tensorflow-hub==0.12.0
 tinydb
