@@ -1,78 +1,17 @@
 import streamlit as st
-
-import functools
+from functions import *
 import os
-import sys
 
-import PIL.Image
-import time
-import requests
-import glob
-
-from matplotlib import gridspec
-import matplotlib.pylab as plt
-import numpy as np
-import tensorflow as tf
-import tensorflow_hub as hub
-
-os.environ['TFHUB_MODEL_LOAD_FORMAT'] = 'COMPRESSED'
-
-hub_handle = 'model/magenta_arbitrary-image-stylization-v1-256_2'
-hub_model = hub.load(hub_handle)
-
-
-def load_img(path_to_img):
-    max_dim = 512
-    img = tf.io.read_file(path_to_img)
-    img = tf.image.decode_image(img, channels=3)
-    img = tf.image.convert_image_dtype(img, tf.float32)
-
-    shape = tf.cast(tf.shape(img)[:-1], tf.float32)
-    long_dim = max(shape)
-    scale = max_dim / long_dim
-
-    new_shape = tf.cast(shape * scale, tf.int32)
-
-    img = tf.image.resize(img, new_shape)
-    img = img[tf.newaxis, :]
-    return img
-
-
-def download_file(url, local_filename):
-    r = requests.get(url)
-    f = open(local_filename, 'wb')
-    for chunk in r.iter_content(chunk_size=512 * 1024):
-        if chunk:  # filter out keep-alive new chunks
-            f.write(chunk)
-    f.close()
-    return local_filename
-
-
-def tensor_to_image(tensor):
-    tensor = tensor * 255
-    tensor = np.array(tensor, dtype=np.uint8)
-    if np.ndim(tensor) > 3:
-        assert tensor.shape[0] == 1
-        tensor = tensor[0]
-    return PIL.Image.fromarray(tensor)
-
-
-### 'Screens'
-
-## Upload style image and save file in /styles
+# 'Screens'
+# Upload style image and save file in /styles
 
 def upload_style_image():
     style_file_name = st.text_input("Name your style", 'name')
     style_file = st.file_uploader("Please upload an image file or...", type=["jpg", "jpeg", "png"])
     if style_file:
         if st.button("Upload"):
-            image = PIL.Image.open(style_file)
-            rgb_im = image.convert('RGB')
-            new_file_name = os.path.join("styles/", style_file_name + '.jpg')
+            new_file_name = save_new_image_style(style_file, style_file_name)
             st.write(new_file_name)
-            rgb_im.save(new_file_name, format="JPEG")
-            # with open(new_file_name,"wb") as f:
-            #     f.write(style_file.getbuffer())
             st.success("Saved File")
 
 
@@ -97,8 +36,6 @@ if page == 'show_styles':
     show_gallery_of_styles()
 
 elif page == 'system_info':
-    st.write("TF Version: ", tf.__version__)
-    st.write("TF Hub version: ", hub.__version__)
     pwd = os.getcwd()
     listing = os.listdir(pwd)
     st.write(listing)
@@ -114,17 +51,7 @@ elif page == "transfer_style":
     if st.button('Restyle'):
         uploaded_image = download_file(original_image_url, "original.jpg")
         st.image(uploaded_image)
-        # st.image(style_image_url)
-
         content_image = load_img("original.jpg")
         style_image = load_img(style_image_url)
-
-        # st.write(original_image_url)
-        # st.write(style_image_url)
-        # st.image(style_image)
-
-        stylized_image = hub_model(tf.constant(content_image), tf.constant(style_image))[0]
-
-        final_img = tensor_to_image(stylized_image)
-
+        final_img = transfer_style(content_image, style_image)
         st.image(final_img)
