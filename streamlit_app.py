@@ -1,7 +1,8 @@
 import streamlit as st
 
 import functools
-import os, sys
+import os
+import sys
 
 import PIL.Image
 import time
@@ -44,7 +45,7 @@ def download_file(url, local_filename):
         if chunk:  # filter out keep-alive new chunks
             f.write(chunk)
     f.close()
-    return
+    return local_filename
 
 
 def tensor_to_image(tensor):
@@ -95,32 +96,24 @@ if page == 'show_styles':
     st.header('Styles gallery')
     show_gallery_of_styles()
 
-
-
 elif page == 'system_info':
     st.write("TF Version: ", tf.__version__)
     st.write("TF Hub version: ", hub.__version__)
-
     pwd = os.getcwd()
     listing = os.listdir(pwd)
     st.write(listing)
     st.write(os.listdir(pwd + '/styles/'))
 
-
-
-
 elif page == "transfer_style":
-
     images_glob = os.listdir("styles/")
     images_glob = set([x for x in images_glob if x.endswith(".jpg")])
     style_img = st.radio('Choose style', images_glob)
-
     style_image_url = "styles/" + style_img
     original_image_url = st.text_input("Style image from URL", )
 
     if st.button('Restyle'):
-        download_file(original_image_url, "original.jpg")
-        st.image("original.jpg")
+        uploaded_image = download_file(original_image_url, "original.jpg")
+        st.image(uploaded_image)
         # st.image(style_image_url)
 
         content_image = load_img("original.jpg")
