@@ -1,13 +1,13 @@
-streamlit~=1.2.0
+streamlit==1.2.0
 functions
-matplotlib~=3.5.0
-tensorflow-cpu
+matplotlib==3.5.0
+tensorflow-cpu==2.6.2
 tensorflow-hub==0.12.0
 tinydb
 
-Pillow~=8.4.0
-requests~=2.26.0
-numpy~=1.21.4
+Pillow==8.4.0
+requests==2.26.0
+numpy==1.21.4
 
 uvicorn>=0.12.3
 
