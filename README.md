@@ -2,7 +2,7 @@
 Fast Style Transfer for given images
 
 ## Web-app
-https://prizmoid.herokuapp.com/ 
+https://prizmoid-xoqsf.ondigitalocean.app/
 
 ## Description
 
