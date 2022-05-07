@@ -10,8 +10,6 @@ os.environ['TFHUB_MODEL_LOAD_FORMAT'] = 'COMPRESSED'
 hub_handle = 'model/magenta_arbitrary-image-stylization-v1-256_2'
 hub_model = hub.load(hub_handle)
 
-z = 'test'
-
 
 def load_img(path_to_img):
     max_dim = 512
