@@ -2,6 +2,11 @@ import streamlit as st
 from functions import *
 import os
 
+st.set_page_config(
+    page_title="PRIZMOID",
+    page_icon="🎈",
+)
+
 z = 2
 
 # 'Screens'
