@@ -2,6 +2,10 @@ import streamlit as st
 from functions import *
 import os
 
+st.set_page_config(
+    page_title="PRIZMOID",
+    page_icon="🎈",
+)
 
 st.set_page_config(
     page_title="PRIZMOID",
@@ -10,6 +14,7 @@ st.set_page_config(
 
 
 z = 2
+
 
 # 'Screens'
 # Upload style image and save file in /styles
