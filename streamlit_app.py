@@ -7,12 +7,6 @@ st.set_page_config(
     page_icon="🎈",
 )
 
-st.set_page_config(
-    page_title="PRIZMOID",
-    page_icon="🎈",
-)
-
-
 z = 2
 
 
