@@ -14,6 +14,10 @@ z = 2
 # Upload style image and save file in /styles
 
 def upload_style_image():
+    """
+    
+    :return:
+    """
     style_file_name = st.text_input("Name your style", 'name')
     style_file = st.file_uploader("Please upload an image file or...", type=["jpg", "jpeg", "png"])
     if style_file:
@@ -24,6 +28,10 @@ def upload_style_image():
 
 
 def show_gallery_of_styles():
+    """
+
+    :return:
+    """
     images_glob = os.listdir("styles/")
     images_glob = [x for x in images_glob if x.endswith(".jpg")]
 
