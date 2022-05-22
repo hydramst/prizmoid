@@ -8,6 +8,7 @@ st.set_page_config(
 )
 
 z = 2
+types = "jpg", "jpeg", "png"
 
 
 # 'Screens'
@@ -19,13 +20,27 @@ def upload_style_image():
     :return:
     """
     style_file_name = st.text_input("Name your style", 'name')
-    style_file = st.file_uploader("Please upload an image file or...", type=["jpg", "jpeg", "png"])
+    original_image_url = st.text_input("Please upload style image from URL", )
+
+    if st.button("Upload"):
+        style_file = download_file(original_image_url, style_file_name)
+        new_file_name = save_new_image_style(style_file, style_file_name)
+        st.write(new_file_name)
+        st.success("Saved File")
+
+
+def upload_your_image():
+    """
+
+    :return:
+    """
+    style_file_name = st.text_input("Name your style", 'name')
+    style_file = st.file_uploader("Please upload an image file or...", type=[types])
     if style_file:
         if st.button("Upload"):
             new_file_name = save_new_image_style(style_file, style_file_name)
             st.write(new_file_name)
             st.success("Saved File")
-
 
 def show_gallery_of_styles():
     """
@@ -33,7 +48,7 @@ def show_gallery_of_styles():
     :return:
     """
     images_glob = os.listdir("styles/")
-    images_glob = [x for x in images_glob if x.endswith(".jpg")]
+    images_glob = [x for x in images_glob if x.endswith(types)]
 
     for i in range(len(images_glob)):
         cols = st.columns(2)
@@ -41,15 +56,12 @@ def show_gallery_of_styles():
         cols[1].write(images_glob[i].rsplit('.', 1)[0])
 
 
-page = st.sidebar.radio('Choose action', ('upload_style', 'show_styles', 'transfer_style', 'system_info'))
+page = st.sidebar.radio('Choose action',
+                        ('transfer_style', 'upload_style', 'system_info'))
 
 if page == 'upload_style':
     st.header('Upload new style')
     upload_style_image()
-
-if page == 'show_styles':
-    st.header('Styles gallery')
-    show_gallery_of_styles()
 
 elif page == 'system_info':
     pwd = os.getcwd()
@@ -59,7 +71,7 @@ elif page == 'system_info':
 
 elif page == "transfer_style":
     images_glob = os.listdir("styles/")
-    images_glob = set([x for x in images_glob if x.endswith(".jpg")])
+    images_glob = set([x for x in images_glob if x.endswith(types)])
     style_img = st.radio('Choose style', images_glob)
     style_image_url = "styles/" + style_img
     original_image_url = st.text_input("Style image from URL", )
@@ -71,3 +83,6 @@ elif page == "transfer_style":
         style_image = load_img(style_image_url)
         final_img = transfer_style(content_image, style_image)
         st.image(final_img)
+
+    st.header('Styles gallery')
+    show_gallery_of_styles()

@@ -69,7 +69,7 @@ def download_file(url, local_filename):
     :return:
     """
     r = requests.get(url)
-    f = open(local_filename, 'wb')
+    f = open(f'/styles/{local_filename}', 'wb')
     for chunk in r.iter_content(chunk_size=512 * 1024):
         if chunk:  # filter out keep-alive new chunks
             f.write(chunk)
