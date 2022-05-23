@@ -65,6 +65,18 @@ def save_new_image_style(style_file, style_file_name):
     rgb_im.save(new_file_name, format="JPEG")
     return new_file_name
 
+def save_user_image(img):
+    """
+
+    :param style_file:
+    :param style_file_name:
+    :return:
+    """
+    #image = PIL.Image.open(style_file)
+    rgb_im = image.convert('RGB')
+    new_file_name = os.path.join("/", "user_file" + '.jpg')
+    rgb_im.save(new_file_name, format="JPEG")
+    return None
 
 def download_file(url, local_filename):
     """
