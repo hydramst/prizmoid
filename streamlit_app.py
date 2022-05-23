@@ -40,6 +40,7 @@ def upload_your_image():
         image_file = st.file_uploader("Upload Images", type=["jpg", "jpeg", "png"])
         if image_file:
             st.image(show_image(image_file))
+        if st.button('Restyle'):
             file_user_path = save_user_image(image_file)
             content_image = load_img(file_user_path)
             style_image = load_img(style_image_url)
