@@ -40,7 +40,15 @@ def upload_your_image():
         image_file = st.file_uploader("Upload Images", type=["jpg", "jpeg", "png"])
         if image_file:
             st.image(show_image(image_file))
-            transfer_style()
+            save_user_image(image_file)
+            content_image = load_img('/user_file.jpg')
+            style_image = load_img(style_image_url)
+            final_img = transfer_style(content_image, style_image)
+            st.image(final_img)
+    if choice == "Web link":
+        st.title('дописать')
+            
+            
 
 def show_gallery_of_styles():
     """
@@ -69,14 +77,17 @@ elif page == "transfer_style":
     style_img = st.radio('Choose style', images_glob)
     style_image_url = "styles/" + style_img
 
-    original_image = upload_your_image()
-    if st.button('Restyle'):
-        uploaded_image = download_file(original_image, "original.jpg")
-        st.image(uploaded_image)
-        content_image = load_img("original.jpg")
-        style_image = load_img(style_image_url)
-        final_img = transfer_style(content_image, style_image)
-        st.image(final_img)
+    #original_image = upload_your_image()
+    
+    upload_your_image()
+    
+#     if st.button('Restyle'):
+#         uploaded_image = download_file(original_image, "original.jpg")
+#         st.image(uploaded_image)
+#         content_image = load_img("original.jpg")
+#         style_image = load_img(style_image_url)
+#         final_img = transfer_style(content_image, style_image)
+#         st.image(final_img)
     # original_image_url = st.text_input("Style image from URL", )
     #
     # if st.button('Restyle'):
