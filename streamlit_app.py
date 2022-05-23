@@ -46,14 +46,15 @@ def upload_your_image():
             final_img = transfer_style(content_image, style_image)
             st.image(final_img)
     if choice == "Web link":
-        original_image_url = st.text_input("Style image from URL", )
-        if st.button('Restyle'):
-            uploaded_image = download_file(original_image_url, "original.jpg")
-            st.image(uploaded_image)
-            content_image = load_img("original.jpg")
-            style_image = load_img(style_image_url)
-            final_img = transfer_style(content_image, style_image)
-            st.image(final_img)
+        st.write('This feature in progress')
+        # original_image_url = st.text_input("Style image from URL", )
+        # if st.button('Restyle'):
+        #     uploaded_image = download_file(original_image_url, "original.jpg")
+        #     st.image(uploaded_image)
+        #     content_image = load_img("original.jpg")
+        #     style_image = load_img(style_image_url)
+        #     final_img = transfer_style(content_image, style_image)
+        #     st.image(final_img)
 
 
 def show_gallery_of_styles():
